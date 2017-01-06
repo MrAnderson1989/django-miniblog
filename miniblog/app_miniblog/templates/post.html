@@ -1,0 +1,61 @@
+{% extends "dashboard.html" %}
+{% block title %} Submit {% endblock %}
+{% block head %}
+{{block.super}}
+   <link href="/static/weditor/css/wangEditor.css" rel="stylesheet" />
+ {% endblock %}
+{% block function %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Submit</h1>
+    <div class="form-horizontal" role="form">
+        <div class="col-lg-9">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">文章标题：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                </div>
+            </div>
+
+     <!--        <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">作者：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label for="inputPassword" class="col-sm-2 control-label">内容：</label>
+                    <div class="col-sm-10" runat="server" id="editor3Div" style="width: 83%;" >
+                        <div id="editorS" runat="server" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">发布文章</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block js%}
+{{block.super}}
+ <script src="/static/weditor/js/wangEditor.min.js"></script>
+ <script >
+      $(document).ready(function () {
+            var editor1 = new wangEditor('editorS');
+            // 上传图片（举例）
+            editor1.config.uploadImgUrl = '/upload/';
+            editor1.onchange = function () {
+                // 编辑区域内容变化时，实时打印出当前内容
+                console.log(this.$txt.html());
+                $("#txt").val(this.$txt.html());
+            };
+            wangEditor.config.mapAk = 'Aeh7Y18ALpAD0i6VFKmHv43xTShc9XQs';
+            editor1.create();
+            //editor1.$txt.html($("#content").html());
+        });
+ </script>
+{% endblock%}

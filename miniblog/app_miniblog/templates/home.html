@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block head %}
+{{block.super}}
+ <link href="/static/css/blog.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+  <div class="blog-header">
+    <h1 class="blog-title">The YuPeng Blog</h1>
+    <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+  </div>
+
+
+{% endblock %}
